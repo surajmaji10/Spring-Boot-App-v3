@@ -3,11 +3,11 @@ kind: Service
 metadata:
   name: account-service
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: account-service
   ports:
     - protocol: TCP
       port: 8080
       targetPort: 8080
-      nodePort: 31000 # Ensure unique NodePorts across services
+

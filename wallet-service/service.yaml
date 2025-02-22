@@ -3,11 +3,12 @@ kind: Service
 metadata:
   name: wallet-service
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: wallet-service
   ports:
     - protocol: TCP
       port: 8080
       targetPort: 8080
-      nodePort: 31002 # Ensure unique NodePorts across services
+
+

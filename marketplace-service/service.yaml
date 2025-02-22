@@ -3,11 +3,11 @@ kind: Service
 metadata:
   name: marketplace-service
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: marketplace-service
   ports:
     - protocol: TCP
       port: 8080
       targetPort: 8080
-      nodePort: 31001 # Ensure unique NodePorts across services
+
