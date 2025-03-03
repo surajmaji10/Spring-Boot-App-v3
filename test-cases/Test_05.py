@@ -48,12 +48,14 @@ def update_wallet(user_id, action, amount):
 def place_order(order_data):  
     """Place an order."""  
     response = requests.post(f"{MARKETPLACE_SERVICE_URL}/orders", json=order_data)  
-    assert response.status_code == 200, "Failed to place order"  
+    print(response.text, response.status_code)
+    assert response.status_code == 201, "Failed to place order"  
     return response.json()  
 
 def update_order_status(order_id, status):  
     """Update the order status."""  
     response = requests.put(f"{MARKETPLACE_SERVICE_URL}/orders/{order_id}", json={"order_id": order_id, "status": status})  
+    print(response.text, response.status_code)
     assert response.status_code == 200, "Failed to update order status"  
     return response.json()  
 
@@ -82,10 +84,10 @@ def test_order_flow(user_id, name, email, product_id, qty):
     try:  
         # Create a new user  
         create_user(user_id, name, email)  
-
+        print("User Created:", user_id, name, email)
         # Add money to the user's wallet  
         update_wallet(user_id, "credit", 1000000)  
-
+        print("Wallet Updated:", user_id, "credited with 1000000")
         # Place an order  
         order_data = {"items": [{"product_id": product_id, "quantity": qty}], "user_id": user_id}  
         placed_order = place_order(order_data)  

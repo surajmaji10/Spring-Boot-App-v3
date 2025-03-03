@@ -55,6 +55,9 @@ def add_money_and_check_detail(id, name, email, productId, walletAmount):
         new_user = create_user(id, name, email)  
         new_userid = new_user.json()['id']  
 
+        # old_wallet_balance = get_wallet(new_userid).json()['balance']
+        # print("Old wallet balance: ", old_wallet_balance)
+
         # Add money to the user's wallet  
         update_wallet(new_userid, "credit", walletAmount)  
 

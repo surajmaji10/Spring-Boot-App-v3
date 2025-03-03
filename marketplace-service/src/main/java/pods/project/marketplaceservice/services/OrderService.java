@@ -108,6 +108,8 @@ public class OrderService {
         String status = request.get("status").toString();
         Order order = orders.get(0);
 
+        System.out.println("ORDER IDs: " + order_id +  ":" + id);
+    
         if(id != order_id){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(orderNotFound(id, true));
         }
@@ -221,7 +223,7 @@ public class OrderService {
             map.put("status", "PLACED");
             map.put("items", flattenOrderItems(orderItems));
             System.out.printf(map.toString());
-            return ResponseEntity.status(HttpStatus.OK).body(map);
+            return ResponseEntity.status(HttpStatus.CREATED).body(map);
         }
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internel Error! This is on us.");

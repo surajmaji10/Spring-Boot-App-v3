@@ -180,7 +180,7 @@ public class UserService {
     }
 
     private void deleteOrders() {
-        String url = marketplaceServiceUrl + "/marketplace/users";
+        String url = marketplaceServiceUrl + "/marketplace";
         System.out.println("CHECK URL: "+ url);
 
         HttpEntity<Map<String, Object>> requestEntity = new HttpEntity<>(null, null);

@@ -37,7 +37,7 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @GetMapping("orders")
+    @GetMapping("/orders")
     public ResponseEntity<List<Product>> getAllOrders(){
         return orderService.getAllOrders();
     }
